@@ -1,0 +1,94 @@
+baseURL = "https://ttesla.github.io/"
+locale = "en-US"
+title = "Ömer Akyol"
+enableRobotsTXT = true
+enableEmoji = true
+
+[pagination]
+  pagerSize = 10
+
+[permalinks]
+  posts = "/posts/:year/:contentbasename/"
+  games = "/games/:contentbasename/"
+
+[taxonomies]
+  tag = "tags"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  noClasses = false
+  style = "monokai"
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]
+
+[privacy.youtube]
+  privacyEnhanced = true
+
+[menus]
+  [[menus.main]]
+    name = "Home"
+    pageRef = "/"
+    weight = 10
+  [[menus.main]]
+    name = "Games"
+    pageRef = "/games"
+    weight = 20
+  [[menus.main]]
+    name = "Blog"
+    pageRef = "/posts"
+    weight = 30
+  [[menus.main]]
+    name = "About"
+    pageRef = "/about"
+    weight = 40
+
+[params]
+  description = "Ömer Akyol — Senior Gameplay & Generalist Programmer. Games, VR/AR, demoscene and the Insert Coin dev blog."
+  blogName = "Insert Coin"
+  blogTagline = "Yet another indie game development blog"
+  role = "Senior Gameplay & Generalist Programmer"
+  location = "Stockholm, Sweden"
+  photo = "images/me.jpg"
+  portfolio = "omer_akyol_portfolio.pdf"
+  email = "omer.akyol@gmail.com"
+  scroller = "HA HA HA...    ANOTHER SCROLL TEXT TO FILL IN...     LET'S KICK IT...     THIS IS ÖMER 'TESLA' AKYOL OF RESIDENT! WELCOME TO MY PAGE.           CHECK OUT GAMES, TOOLS AND MY BLOG...             DROP A MAIL OR DM TO CONTACT...                KEEP DEMONSTRATING AND STAY RETRO STAY RAD!          "
+
+  # Entries with an icon show as logos in the contact sections
+  [[params.social]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/omerakyol"
+    icon = "linkedin"
+  [[params.social]]
+    name = "GitHub"
+    url = "https://github.com/ttesla"
+    icon = "github"
+  [[params.social]]
+    name = "Discord"
+    url = "https://discord.com/users/247460964641800192"
+    icon = "discord"
+  [[params.social]]
+    name = "itch.io"
+    url = "https://tesla.itch.io/"
+    icon = "itch"
+  [[params.social]]
+    name = "X"
+    url = "https://x.com/tesla_tank"
+    icon = "x"
+  [[params.social]]
+    name = "Mastodon"
+    url = "https://mastodon.gamedev.place/@tesla"
+    icon = "mastodon"
+  [[params.social]]
+    name = "YouTube"
+    url = "https://www.youtube.com/@omerakyol"
+    icon = "youtube"
+  [[params.social]]
+    name = "Demozoo"
+    url = "https://demozoo.org/sceners/46766/"
+  [[params.social]]
+    name = "RSS"
+    url = "posts/index.xml"

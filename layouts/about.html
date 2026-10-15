@@ -1,0 +1,64 @@
+{{ define "main" }}
+<article class="wrap about">
+  <header class="page-head">
+    <p class="eyebrow">Character sheet</p>
+    <h1 class="pixel-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="about-grid">
+    <div class="prose">
+      {{ .Content }}
+    </div>
+
+    <aside class="cart-info" aria-label="Quick facts">
+      <div class="p1">
+        <img class="avatar" src="{{ site.Params.photo | relURL }}" alt="{{ site.Title }}" width="64" height="64">
+        <h2>Player info</h2>
+      </div>
+      <dl>
+        <dt>Name</dt><dd>{{ site.Title }}</dd>
+        <dt>Class</dt><dd>{{ site.Params.role }}</dd>
+        <dt>Base</dt><dd>{{ site.Params.location }}</dd>
+        <dt>Scene nick</dt><dd>tesla / Resident</dd>
+        <dt>Contact</dt><dd>{{ partial "contact-icons.html" (dict "only" (slice "linkedin" "discord")) }}</dd>
+      </dl>
+      <div class="buttons">
+        <a class="btn btn-primary" href="{{ site.Params.portfolio | relURL }}">Portfolio PDF</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Skills -->
+  <section class="block">
+    <h2 class="pixel-title"><span>01</span> Skill tree</h2>
+    <div class="skills">
+      {{ range hugo.Data.skills }}
+        <div class="skill-group">
+          <h3>{{ .group }}</h3>
+          <ul>
+            {{ range .items }}
+              {{ $level := .level }}
+              <li>
+                <span>{{ .name }}</span>
+                <span class="bar" role="img" aria-label="{{ $level }} of 5">
+                  {{- range seq 5 }}<i{{ if le . $level }} class="on"{{ end }}></i>{{ end -}}
+                </span>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="block">
+    <h2 class="pixel-title"><span>02</span> Training</h2>
+    <ul class="edu">
+      {{ range hugo.Data.education }}
+        <li><strong>{{ .degree }}</strong><span>{{ .school }}</span><span class="muted">{{ .years }}</span></li>
+      {{ end }}
+    </ul>
+  </section>
+</article>
+{{ end }}

@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="wrap page-head">
+  <p class="eyebrow">{{ with .Parent }}{{ .Title }}{{ end }}</p>
+  <h1 class="pixel-title">{{ if eq .Kind "term" }}#{{ end }}{{ .Title }}</h1>
+  {{ with .Content }}<div class="lead">{{ . }}</div>{{ end }}
+</section>
+
+<section class="wrap block">
+  {{ if eq .Kind "taxonomy" }}
+    <ul class="chips chips-big">
+      {{ range .Pages }}<li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }} ({{ len .Pages }})</a></li>{{ end }}
+    </ul>
+  {{ else }}
+    <ul class="post-list">
+      {{ range .Pages }}
+        {{ partial "post-item.html" . }}
+      {{ end }}
+    </ul>
+  {{ end }}
+</section>
+{{ end }}

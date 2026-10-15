@@ -1,0 +1,22 @@
+<article class="cart" data-kind="{{ .Params.kind | default "indie" }}">
+  <a class="cart-link" href="{{ .RelPermalink }}">
+    <div class="cart-screen">
+      {{ with .Params.cover }}
+        <img src="{{ . | relURL }}" alt="" loading="lazy"{{ with $.Params.coverPosition }} style="object-position: {{ . }}"{{ end }}>
+      {{ else }}
+        <div class="no-signal" aria-hidden="true"><span>No signal</span></div>
+      {{ end }}
+      {{ with .Params.status }}<span class="cart-badge">{{ . }}</span>{{ end }}
+    </div>
+    <div class="cart-label">
+      <h3>{{ .Title }}</h3>
+      <p class="cart-meta">
+        {{ with .Params.years }}<span>{{ . }}</span>{{ end }}
+        {{ with .Params.studio }}<span>{{ . }}</span>{{ end }}
+      </p>
+      {{ with .Params.tech }}
+        <ul class="chips">{{ range first 4 . }}<li>{{ . }}</li>{{ end }}</ul>
+      {{ end }}
+    </div>
+  </a>
+</article>

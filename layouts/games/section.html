@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="wrap page-head">
+  <p class="eyebrow">Select cartridge</p>
+  <h1 class="pixel-title">{{ .Title }}</h1>
+  <div class="lead">{{ .Content }}</div>
+
+  <div class="filters" role="group" aria-label="Filter games">
+    <button class="filter active" data-filter="all" aria-pressed="true">All</button>
+    <button class="filter" data-filter="pro" aria-pressed="false">Studio</button>
+    <button class="filter" data-filter="indie" aria-pressed="false">Indie &amp; jams</button>
+    <button class="filter" data-filter="tool" aria-pressed="false">Tools &amp; demos</button>
+  </div>
+</section>
+
+<section class="wrap block">
+  <div class="carts">
+    {{ range .Pages.ByWeight }}
+      {{ partial "game-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}

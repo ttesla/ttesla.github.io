@@ -1,0 +1,28 @@
+# Skill tree. "level" is 1-5 and fills the power bar.
+- group: Languages
+  items:
+    - { name: "C#", level: 5 }
+    - { name: "C++", level: 4 }
+    - { name: "TypeScript", level: 3 }
+    - { name: "Java", level: 3 }
+
+- group: Engines
+  items:
+    - { name: "Unity", level: 5 }
+    - { name: "Proprietary engines", level: 4 }
+    - { name: "Lens Studio", level: 3 }
+    - { name: "Unreal", level: 2 }
+
+- group: Game dev
+  items:
+    - { name: "Gameplay & game feel", level: 5 }
+    - { name: "Multiplayer", level: 4 }
+    - { name: "3D math & physics", level: 4 }
+    - { name: "VR / AR", level: 4 }
+
+- group: Platforms
+  items:
+    - { name: "Meta Quest", level: 5 }
+    - { name: "Android / iOS", level: 5 }
+    - { name: "Steam / PC", level: 4 }
+    - { name: "Nintendo Switch", level: 4 }

@@ -1,0 +1,36 @@
+{{ define "main" }}
+<article class="wrap post">
+  <a class="back" href="{{ .Parent.RelPermalink }}">◄ {{ site.Params.blogName }}</a>
+
+  <header class="post-head">
+    <p class="eyebrow">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 January 2006" }}</time>
+      · {{ .ReadingTime }} min read
+    </p>
+    <h1 class="pixel-title">{{ .Title }}</h1>
+    {{ with .GetTerms "tags" }}
+      <ul class="chips">{{ range . }}<li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a></li>{{ end }}</ul>
+    {{ end }}
+  </header>
+
+  {{ with .Params.cover }}
+    <div class="monitor post-cover"><img src="{{ . | relURL }}" alt=""></div>
+  {{ end }}
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+  <nav class="post-nav" aria-label="More posts">
+    {{ $older := false }}
+    {{ $newer := false }}
+    {{ range slice .PrevInSection .NextInSection }}
+      {{ with . }}
+        {{ if .Date.Before $.Date }}{{ $older = . }}{{ else }}{{ $newer = . }}{{ end }}
+      {{ end }}
+    {{ end }}
+    {{ with $older }}<a class="prev" href="{{ .RelPermalink }}"><span>◄ Previous level</span>{{ .Title }}</a>{{ end }}
+    {{ with $newer }}<a class="next" href="{{ .RelPermalink }}"><span>Next level ►</span>{{ .Title }}</a>{{ end }}
+  </nav>
+</article>
+{{ end }}

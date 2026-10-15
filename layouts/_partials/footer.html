@@ -1,0 +1,14 @@
+<footer class="site-footer">
+  <div class="copper" aria-hidden="true"></div>
+  <div class="wrap footer-row">
+    <p class="footer-hi">
+      <span class="pixel">© {{ now.Year }} {{ site.Title }}</span>
+      <span class="muted">Built with Hugo · Hosted on GitHub Pages</span>
+    </p>
+    <ul class="social">
+      {{ range site.Params.social }}
+        <li><a href="{{ .url | relURL }}" rel="me noopener">{{ .name }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</footer>

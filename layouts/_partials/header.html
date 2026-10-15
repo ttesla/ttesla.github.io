@@ -1,0 +1,24 @@
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} home">
+      <span class="logo-1up">1UP</span>
+      <span class="logo-name">{{ site.Title }}</span>
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      {{ $current := . }}
+      {{ range site.Menus.main }}
+        {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+        {{ if and (eq .PageRef "/") (not $current.IsHome) }}{{ $active = false }}{{ end }}
+        <a href="{{ .URL }}"{{ if $active }} class="active" aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+      <button class="coin" type="button" title="Insert coin">
+        <span class="coin-icon" aria-hidden="true"></span>
+        <span class="coin-label">Credits</span>
+        <span class="coin-count">00</span>
+      </button>
+    </nav>
+  </div>
+</header>

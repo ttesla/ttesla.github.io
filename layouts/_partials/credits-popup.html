@@ -1,0 +1,9 @@
+<dialog class="popup" id="credits-popup" aria-labelledby="popup-title">
+  <form method="dialog">
+    <button class="popup-close" aria-label="Close">×</button>
+  </form>
+  <p class="eyebrow">Credit overflow</p>
+  <h2 id="popup-title" class="pixel-title">Hey, do you have infinite credits? Hehe</h2>
+  <p class="popup-sub blink-slow">Let's connect</p>
+  {{ partial "contact-icons.html" (dict "only" (slice "linkedin" "discord")) }}
+</dialog>

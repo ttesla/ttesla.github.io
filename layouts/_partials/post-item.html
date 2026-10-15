@@ -1,0 +1,7 @@
+<li class="post-item">
+  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{ with .Params.tags }}
+    <span class="post-tags">{{ range first 3 . }}<span>#{{ . }}</span>{{ end }}</span>
+  {{ end }}
+</li>

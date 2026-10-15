@@ -1,0 +1,18 @@
+{{- /* Contact logos: mail first, then socials with an icon. Pass "only" to pick icons. */ -}}
+{{- $only := .only -}}
+<ul class="contact-icons">
+  <li>
+    <a href="mailto:{{ site.Params.email }}" aria-label="Email {{ site.Params.email }}" title="{{ site.Params.email }}">
+      {{ (resources.Get "icons/mail.svg").Content | safeHTML }}
+    </a>
+  </li>
+  {{ range site.Params.social }}
+    {{ if and .icon (or (not $only) (in $only .icon)) }}
+      <li>
+        <a href="{{ .url }}" rel="me noopener" aria-label="{{ .name }}" title="{{ .name }}">
+          {{ (resources.Get (printf "icons/%s.svg" .icon)).Content | safeHTML }}
+        </a>
+      </li>
+    {{ end }}
+  {{ end }}
+</ul>

@@ -1,0 +1,65 @@
+{{ define "main" }}
+{{ $games := where site.RegularPages "Section" "games" }}
+{{ $posts := where site.RegularPages "Section" "posts" }}
+
+<!-- Hero -->
+<section class="hero">
+  <canvas class="hero-canvas" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="p1">
+        <img class="avatar" src="{{ site.Params.photo | relURL }}" alt="{{ site.Title }}" width="64" height="64">
+        <p class="eyebrow">Player 1 <span class="p1-ready"><span class="led"></span>Ready</span></p>
+      </div>
+      <h1 class="glitch" data-text="{{ site.Title }}">{{ site.Title }}</h1>
+      <p class="hero-role">{{ site.Params.role }}</p>
+      <p class="hero-where">{{ site.Params.location }}</p>
+      <div class="hero-intro">{{ .Content }}</div>
+      <div class="buttons">
+        <a class="btn btn-primary" href="{{ "games/" | relURL }}">Press Start</a>
+        <a class="btn" href="{{ "posts/" | relURL }}">Read the blog</a>
+        <a class="btn btn-ghost" href="{{ site.Params.portfolio | relURL }}">Portfolio.PDF</a>
+      </div>
+    </div>
+  </div>
+  <canvas class="scroller" aria-hidden="true" data-text="{{ site.Params.scroller }}"></canvas>
+</section>
+<div class="copper" aria-hidden="true"></div>
+
+<!-- Featured games -->
+<section class="wrap block" id="games">
+  <header class="block-head">
+    <h2 class="pixel-title"><span>01</span> High scores</h2>
+    <a class="more" href="{{ "games/" | relURL }}">All games ►</a>
+  </header>
+  <div class="carts">
+    {{ range first 6 (where $games.ByWeight "Params.featured" true) }}
+      {{ partial "game-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+
+<!-- Latest posts -->
+<section class="wrap block" id="blog">
+  <header class="block-head">
+    <h2 class="pixel-title"><span>02</span> {{ site.Params.blogName }}</h2>
+    <a class="more" href="{{ "posts/" | relURL }}">All posts ►</a>
+  </header>
+  <p class="block-sub">{{ site.Params.blogTagline }}</p>
+  <ul class="post-list">
+    {{ range first 5 $posts.ByDate.Reverse }}
+      {{ partial "post-item.html" . }}
+    {{ end }}
+  </ul>
+</section>
+
+<!-- Contact -->
+<section class="wrap block continue" id="contact">
+  <h2 class="pixel-title blink-slow">Continue?</h2>
+  <p>Got a game, a jam or a demo in mind? Say hi.</p>
+  {{ partial "contact-icons.html" dict }}
+  <ul class="social social-big">
+    <li><a href="{{ "posts/index.xml" | relURL }}">RSS</a></li>
+  </ul>
+</section>
+{{ end }}

@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="wrap page-head">
+  <p class="eyebrow">The blog</p>
+  <h1 class="pixel-title">{{ site.Params.blogName }}</h1>
+  <div class="lead">{{ .Content }}</div>
+  <p class="feed-link"><a href="{{ "posts/index.xml" | relURL }}">RSS feed ►</a></p>
+</section>
+
+<section class="wrap block">
+  {{ range .Pages.GroupByDate "2006" }}
+    <h2 class="year"><span>{{ .Key }}</span></h2>
+    <ul class="post-list">
+      {{ range .Pages }}
+        {{ partial "post-item.html" . }}
+      {{ end }}
+    </ul>
+  {{ end }}
+</section>
+{{ end }}

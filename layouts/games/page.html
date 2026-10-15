@@ -1,0 +1,50 @@
+{{ define "main" }}
+<article class="wrap game">
+  <a class="back" href="{{ .Parent.RelPermalink }}">◄ All games</a>
+
+  <header class="game-head">
+    <p class="eyebrow">{{ with .Params.studio }}{{ . }}{{ end }}{{ with .Params.years }} · {{ . }}{{ end }}</p>
+    <h1 class="pixel-title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+  </header>
+
+  <div class="game-grid">
+    <div class="game-media">
+      {{ with .Params.cover }}
+        <div class="monitor"><img src="{{ . | relURL }}" alt="{{ $.Title }} key art"></div>
+      {{ end }}
+    </div>
+
+    <aside class="cart-info" aria-label="Game info">
+      <h2>Cartridge info</h2>
+      <dl>
+        {{ with .Params.role }}<dt>Role</dt><dd>{{ . }}</dd>{{ end }}
+        {{ with .Params.studio }}<dt>Studio</dt><dd>{{ . }}</dd>{{ end }}
+        {{ with .Params.years }}<dt>Year</dt><dd>{{ . }}</dd>{{ end }}
+        {{ with .Params.platforms }}<dt>Platforms</dt><dd>{{ delimit . ", " }}</dd>{{ end }}
+        {{ with .Params.tech }}<dt>Tech</dt><dd><ul class="chips">{{ range . }}<li>{{ . }}</li>{{ end }}</ul></dd>{{ end }}
+      </dl>
+      {{ with .Params.links }}
+        <div class="buttons">
+          {{ range . }}<a class="btn" href="{{ .url }}" rel="noopener">{{ .name }} &gt;</a>{{ end }}
+        </div>
+      {{ end }}
+    </aside>
+  </div>
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.youtube }}
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="{{ $.Title }} video" loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  {{ end }}
+
+  {{ with .Params.itch }}
+    {{ partial "itch.html" (dict "id" . "title" $.Title) }}
+  {{ end }}
+</article>
+{{ end }}

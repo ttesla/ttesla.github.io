@@ -1,0 +1,4 @@
+{{/* Usage: {{< itch 507013 >}} or {{< itch id="507013" title="Super Retro Chase" >}} */}}
+{{ $id := .Get "id" | default (.Get 0) }}
+{{ $title := .Get "title" | default (.Get 1) }}
+{{ partial "itch.html" (dict "id" $id "title" $title) }}

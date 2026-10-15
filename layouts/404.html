@@ -1,0 +1,8 @@
+{{ define "main" }}
+<section class="wrap game-over">
+  <h1 class="pixel-title glitch" data-text="Game over">Game over</h1>
+  <p>This page took a wrong turn and fell into a pit.</p>
+  <p class="countdown-line">Continue? <span class="countdown" data-href="{{ "/" | relURL }}">9</span></p>
+  <a class="btn btn-primary" href="{{ "/" | relURL }}">Insert coin</a>
+</section>
+{{ end }}

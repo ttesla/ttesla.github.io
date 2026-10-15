@@ -1,0 +1,67 @@
+# Career, newest first. Not shown on the site right now.
+- role: Senior Game Programmer
+  company: Resolution Games
+  place: Stockholm, Sweden
+  from: Feb 2024
+  to: Oct 2026
+  points:
+    - Gameplay programmer on *Core Boom*, a multiplayer spatial game for Snap Spectacles. (Lens Studio, TypeScript)
+    - "Gameplay and UI systems for *Demeo x Dungeons & Dragons: Battlemarked*. (Unity, C#, Photon)"
+    - Gameplay and hardware-specific features for the multiplayer VR sports game *Home Sports*. (Unity, C#, Netcode, Meta Quest 3)
+
+- role: Co-Founder, Game Developer
+  company: Polyfun Games
+  place: Ankara, Turkey
+  from: Mar 2020
+  to: Feb 2024
+  points:
+    - Built and shipped *Dynamic Shooting VR* from concept to commercial launch. (Unity, C#, Meta Quest 2, Steam)
+    - One-to-one port of the timing-critical Flash game *A Night at the Races* to Nintendo Switch. (Unity, C#, ActionScript, Nintendo SDK)
+    - Hypercasual mobile games with very rapid iteration for Voodoo, Lion Studios and Supersonic. (Unity, C#, Android, iOS)
+
+- role: Game Developer
+  company: Amelos Interactive
+  place: Ankara, Turkey
+  from: Oct 2017
+  to: Mar 2020
+  points:
+    - Performance optimization of the global hit *Snake.io*.
+    - Gameplay, backend integrations and a seamless cloud save/load system for midcore mobile titles. (Unity, C#, PlayFab)
+
+- role: Software Developer
+  company: Argedor, Zibumi (Esri R&D)
+  place: Ankara, Turkey
+  from: Apr 2016
+  to: Oct 2017
+  points:
+    - Distributed computing solution to evaluate solar panel efficiency of 1 million roofs in Istanbul. (Unity, C#, .NET, MongoDB)
+    - VR and AR prototypes for high-fidelity visualization of real-world map data. (Unity, GearVR, Oculus, Vuforia)
+    - Content management tool for terabytes of underground pipeline data. (WPF, SQLite)
+
+- role: Software Developer
+  company: SimBT
+  place: Ankara, Turkey
+  from: Feb 2015
+  to: Feb 2016
+  points:
+    - Student module, flight simulation and thermal camera visualization for an aircraft recognition training system. (Unity)
+    - Ported the proprietary terrain engine SimWorldEngine to Linux and extended it with JNI bindings. (C++, Java)
+    - 3D visualization of real human anatomical data for a Virtual Anatomy Table. (Unity, C#)
+
+- role: Game Developer
+  company: Elite Game Studio
+  place: Istanbul, Turkey
+  from: Aug 2013
+  to: Jan 2015
+  points:
+    - Network client, gameplay and all game modes (8 Ball, 9 Ball, Snooker, Carom) of the MMO pool game *Pool Elite*. (Unity, C#)
+    - Designed the network architecture and built the game relay server. (uLink, C#, Azure)
+
+- role: Game Developer
+  company: Shortfuse Games AB, Simbin AB
+  place: Skövde, Sweden
+  from: Jun 2010
+  to: Dec 2012
+  points:
+    - Gameplay programming and bug hunting on *RaceRoom*'s proprietary engine. (ISIMotor, C++)
+    - Administrative tools and kiosk machine frontends. (WPF, WCF, PostgreSQL, C#)
