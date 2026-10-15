@@ -3,7 +3,7 @@
   <div class="wrap footer-row">
     <p class="footer-hi">
       <span class="pixel">© {{ now.Year }} {{ site.Title }}</span>
-      <span class="muted">Built with Hugo · Hosted on GitHub Pages</span>
+      <span class="muted">Built with Hugo · Hosted on GitHub Pages{{ with site.GetPage "/privacy-policy" }} · <a href="{{ .RelPermalink }}">Privacy policy</a>{{ end }}</span>
     </p>
     <ul class="social">
       {{ range site.Params.social }}

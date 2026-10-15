@@ -300,17 +300,33 @@ function initSynthwave() {
     ctx.fillStyle = glow;
     ctx.fillRect(cx - r * 2, cy - r * 2, r * 4, r * 4);
 
-    // Sun stripes clip
+    // Sun stripes zone: visual middle down to the horizon
+    const stripeTop = cy - r * 0.3;
+    const stripeH = horizon - stripeTop;
+    const bands = 6;
+    const scroll = (t * 0.25) % 1;
+    const bandY = (u) => stripeTop + u * (0.5 + 0.5 * Math.max(u, 0)) * stripeH;
+
+    // Min gap: wider than the 3px CSS scanlines
+    const minGap = 5;
+
+    // Sun stripes clip: solid cap down to the newest band
     ctx.save();
     ctx.beginPath();
-    ctx.rect(cx - r, cy - r, r * 2, r * 1.05);
-    const bands = 7;
-    const scroll = (t * 0.25) % 1;
-    for (let i = 0; i < bands; i++) {
-      const k = (i + scroll) / bands;
-      const top = cy + r * 0.05 + k * r;
-      const gap = 1 + k * r * 0.09;
-      ctx.rect(cx - r, top + gap, r * 2, r / bands - gap);
+    ctx.rect(cx - r, cy - r, r * 2, bandY((scroll - 1) / bands) - (cy - r));
+    let newGapTop = 0;
+    let newGap = 0;
+    for (let i = -1; i < bands; i++) {
+      const u = (i + 1 + scroll) / bands;
+      const top = bandY((i + scroll) / bands);
+      const bottom = bandY(u);
+      const maxGap = (bottom - top) * 0.6;
+      const gap = Math.min(minGap + (maxGap - minGap) * Math.max(u, 0), maxGap);
+      ctx.rect(cx - r, top, r * 2, bottom - top - gap);
+      if (i === -1) {
+        newGapTop = bottom - gap;
+        newGap = gap;
+      }
     }
     ctx.clip();
 
@@ -319,6 +335,18 @@ function initSynthwave() {
     sun.addColorStop(0, "#ffd23f");
     sun.addColorStop(0.55, "#ff7a5c");
     sun.addColorStop(1, "#ff3d8b");
+    ctx.fillStyle = sun;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+
+    // Newest gap fades open instead of growing from a hairline
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(cx - r, newGapTop, r * 2, newGap);
+    ctx.clip();
+    ctx.globalAlpha = 1 - scroll;
     ctx.fillStyle = sun;
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
