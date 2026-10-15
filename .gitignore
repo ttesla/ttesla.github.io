@@ -3,14 +3,7 @@
 /resources/_gen/
 .hugo_build.lock
 
-# Original source files (copies live in /static)
-/ProfilePhoto.jpg
-/Prompt.txt
-/omer_akyol_cv*.pdf
-/omer_akyol_portfolio_v*.pdf
-
 # OS / editor
 .DS_Store
 Thumbs.db
 .vscode/
-/LinkedinCropped.jpg
